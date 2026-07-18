@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Medicine</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+
+body{
+    background:#f1f5f9;
+}
+
+.container{
+
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+.form-box{
+
+    width:450px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+
+h1{
+
+text-align:center;
+color:#2563eb;
+
+}
+
+
+input,select,textarea{
+
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:10px;
+
+}
+
+
+button{
+
+width:100%;
+padding:14px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="form-box">
+
+
+<h1>
+Edit Medicine
+</h1>
+
+
+<form id="editForm">
+
+
+<input id="name" placeholder="Medicine Name">
+
+
+<input id="dosage" placeholder="Dosage">
+
+
+<select id="frequency">
+
+<option>Daily</option>
+<option>Weekly</option>
+<option>Monthly</option>
+
+</select>
+
+
+<input id="time" type="time">
+
+
+<input id="date" type="date">
+
+
+<textarea id="instructions"
+placeholder="Instructions"></textarea>
+
+
+
+<button>
+Update Medicine
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+let index =
+localStorage.getItem("editIndex");
+
+
+
+let medicines =
+JSON.parse(localStorage.getItem("medicines")) || [];
+
+
+
+let medicine =
+medicines[index];
+
+
+
+document.getElementById("name").value =
+medicine.name;
+
+
+document.getElementById("dosage").value =
+medicine.dosage;
+
+
+document.getElementById("frequency").value =
+medicine.frequency;
+
+
+document.getElementById("time").value =
+medicine.time;
+
+
+document.getElementById("date").value =
+medicine.date;
+
+
+document.getElementById("instructions").value =
+medicine.instructions;
+
+
+
+
+document
+.getElementById("editForm")
+.addEventListener("submit",function(e){
+
+
+e.preventDefault();
+
+
+
+medicines[index]={
+
+name:
+document.getElementById("name").value,
+
+dosage:
+document.getElementById("dosage").value,
+
+frequency:
+document.getElementById("frequency").value,
+
+time:
+document.getElementById("time").value,
+
+date:
+document.getElementById("date").value,
+
+instructions:
+document.getElementById("instructions").value
+
+};
+
+
+
+localStorage.setItem(
+"medicines",
+JSON.stringify(medicines)
+);
+
+
+
+alert("Medicine Updated");
+
+
+window.location.href="medicines.html";
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
