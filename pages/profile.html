@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile - Medical Reminder</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+body{
+    background:#f1f5f9;
+}
+
+
+/* Header */
+
+.header{
+
+    background:white;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+
+.header h2{
+    color:#2563eb;
+}
+
+
+.back{
+
+    text-decoration:none;
+    color:#2563eb;
+
+}
+
+
+
+/* Profile */
+
+.container{
+
+    padding:40px 8%;
+    display:flex;
+    justify-content:center;
+
+}
+
+
+.profile-box{
+
+    width:450px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+
+
+.avatar{
+
+    width:100px;
+    height:100px;
+    background:#2563eb;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    margin:auto;
+    margin-bottom:20px;
+
+}
+
+
+
+.profile-box h1{
+
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:30px;
+
+}
+
+
+
+.input-group{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.input-group label{
+
+    display:block;
+    margin-bottom:8px;
+    font-weight:500;
+
+}
+
+
+
+.input-group input{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+
+}
+
+
+
+.update-btn{
+
+    width:100%;
+    padding:14px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+
+
+.update-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<h2>
+💊 MediCare Reminder
+</h2>
+
+
+<a href="dashboard.html" class="back">
+← Dashboard
+</a>
+
+
+</header>
+
+
+
+
+
+<div class="container">
+
+
+<div class="profile-box">
+
+
+<div class="avatar">
+👤
+</div>
+
+
+
+<h1>
+My Profile
+</h1>
+
+
+
+
+<form id="profileForm">
+
+
+
+<div class="input-group">
+
+<label>
+Full Name
+</label>
+
+<input 
+type="text"
+id="name"
+value="Srija">
+
+</div>
+
+
+
+
+<div class="input-group">
+
+<label>
+Email
+</label>
+
+<input 
+type="email"
+id="email"
+value="user@gmail.com">
+
+</div>
+
+
+
+
+<div class="input-group">
+
+<label>
+Phone Number
+</label>
+
+<input 
+type="tel"
+id="phone"
+value="9876543210">
+
+</div>
+
+
+
+
+<div class="input-group">
+
+<label>
+New Password
+</label>
+
+<input 
+type="password"
+id="password"
+placeholder="Enter new password">
+
+</div>
+
+
+
+
+<button class="update-btn">
+
+Update Profile
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+document
+.getElementById("profileForm")
+.addEventListener("submit",function(e){
+
+
+e.preventDefault();
+
+
+alert("Profile updated successfully!");
+
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
