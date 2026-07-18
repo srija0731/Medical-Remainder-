@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calendar - Medical Reminder</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+body{
+    background:#f1f5f9;
+}
+
+
+.header{
+
+    background:white;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+
+.header h2{
+    color:#2563eb;
+}
+
+
+.header a{
+
+    text-decoration:none;
+    color:#2563eb;
+
+}
+
+
+
+.container{
+
+    padding:40px 8%;
+
+}
+
+
+
+.calendar-box{
+
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+
+}
+
+
+
+.calendar-box h1{
+
+    color:#2563eb;
+    margin-bottom:20px;
+
+}
+
+
+
+.schedule-card{
+
+    background:#eff6ff;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:15px;
+
+}
+
+
+.schedule-card h3{
+
+    color:#1d4ed8;
+
+}
+
+
+.empty{
+
+    text-align:center;
+    padding:30px;
+    color:#666;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<h2>
+💊 MediCare Reminder
+</h2>
+
+
+<a href="dashboard.html">
+← Dashboard
+</a>
+
+
+</header>
+
+
+
+
+<div class="container">
+
+
+<div class="calendar-box">
+
+
+<h1>
+📅 Medicine Calendar
+</h1>
+
+
+<div id="calendarList">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+let medicines =
+JSON.parse(localStorage.getItem("medicines")) || [];
+
+
+
+let calendarList =
+document.getElementById("calendarList");
+
+
+
+if(medicines.length === 0){
+
+
+calendarList.innerHTML = `
+
+<div class="empty">
+
+<h3>
+No medicine schedule found
+</h3>
+
+<p>
+Add medicines to see your calendar.
+</p>
+
+</div>
+
+`;
+
+
+
+}
+else{
+
+
+medicines.forEach(medicine=>{
+
+
+calendarList.innerHTML += `
+
+<div class="schedule-card">
+
+
+<h3>
+${medicine.name}
+</h3>
+
+
+<p>
+💊 Dosage: ${medicine.dosage}
+</p>
+
+
+<p>
+⏰ Time: ${medicine.time}
+</p>
+
+
+<p>
+🔁 Frequency: ${medicine.frequency}
+</p>
+
+
+<p>
+📆 Start Date: ${medicine.date}
+</p>
+
+
+</div>
+
+`;
+
+
+});
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
