@@ -374,3 +374,50 @@ displayMedicines();
 </script>
 
 </html>
+<script>
+
+let user =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+
+if(user){
+
+document.getElementById("username").innerHTML =
+user.name;
+
+}
+
+
+
+let medicines =
+JSON.parse(
+localStorage.getItem("medicines")
+) || [];
+
+
+
+document.getElementById("totalMedicine").innerHTML =
+medicines.length;
+
+
+
+let taken =
+medicines.filter(
+m=>m.status==="Taken"
+).length;
+
+
+
+document.getElementById("takenMedicine").innerHTML =
+taken;
+
+
+
+document.getElementById("pendingMedicine").innerHTML =
+medicines.length - taken;
+
+
+
+</script>
