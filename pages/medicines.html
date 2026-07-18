@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Medicines - Medical Reminder</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+body{
+    background:#f1f5f9;
+}
+
+
+/* Header */
+
+.header{
+
+    background:white;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+
+.header h2{
+    color:#2563eb;
+}
+
+
+.back{
+
+    text-decoration:none;
+    color:#2563eb;
+
+}
+
+
+
+/* Page */
+
+.container{
+
+    padding:40px 8%;
+
+}
+
+
+
+.title{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+
+}
+
+
+
+.add-btn{
+
+    background:#2563eb;
+    color:white;
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+
+}
+
+
+
+/* Medicine cards */
+
+.medicine-list{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+
+}
+
+
+
+.medicine-card{
+
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.medicine-card h3{
+
+    color:#2563eb;
+    margin-bottom:15px;
+
+}
+
+
+
+.info{
+
+    margin:8px 0;
+    color:#555;
+
+}
+
+
+
+.actions{
+
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+
+}
+
+
+
+.edit,
+.delete{
+
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    color:white;
+    cursor:pointer;
+    border:none;
+
+}
+
+
+
+.edit{
+
+    background:#22c55e;
+
+}
+
+
+
+.delete{
+
+    background:#ef4444;
+
+}
+
+
+
+.empty{
+
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+<header class="header">
+
+<h2>
+💊 MediCare Reminder
+</h2>
+
+
+<a href="dashboard.html" class="back">
+← Dashboard
+</a>
+
+
+</header>
+
+
+
+
+
+<div class="container">
+
+
+<div class="title">
+
+<h1>
+My Medicines
+</h1>
+
+
+<a href="add-medicine.html" class="add-btn">
++ Add Medicine
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="medicine-list" id="medicineList">
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+const medicineList =
+document.getElementById("medicineList");
+
+
+
+let medicine =
+JSON.parse(localStorage.getItem("medicine"));
+
+
+
+if(medicine){
+
+
+medicineList.innerHTML = `
+
+
+<div class="medicine-card">
+
+
+<h3>
+${medicine.name}
+</h3>
+
+
+<p class="info">
+💊 Dosage: ${medicine.dosage}
+</p>
+
+
+<p class="info">
+🔔 Time: ${medicine.time}
+</p>
+
+
+<p class="info">
+📅 Frequency: ${medicine.frequency}
+</p>
+
+
+<p class="info">
+📌 Instructions: ${medicine.instructions}
+</p>
+
+
+
+<div class="actions">
+
+
+<a href="add-medicine.html" class="edit">
+Edit
+</a>
+
+
+<button class="delete" onclick="deleteMedicine()">
+Delete
+</button>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+else{
+
+
+medicineList.innerHTML = `
+
+<div class="empty">
+
+<h2>
+No Medicines Added
+</h2>
+
+<p>
+Start adding your medicines.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+
+
+function deleteMedicine(){
+
+
+localStorage.removeItem("medicine");
+
+
+alert("Medicine deleted");
+
+
+location.reload();
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
