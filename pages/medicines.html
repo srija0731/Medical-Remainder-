@@ -207,10 +207,11 @@ My Medicines
 </h1>
 
 
-<a href="add-medicine.html" class="add-btn">
-+ Add Medicine
-</a>
-
+<button 
+class="edit"
+onclick="editMedicine(${index})">
+Edit
+</button>
 
 </div>
 
@@ -347,7 +348,16 @@ location.reload();
 
 
 </script>
+function editMedicine(index){
 
+localStorage.setItem(
+"editIndex",
+index
+);
+
+window.location.href="edit-medicine.html";
+
+}
 
 
 </body>
