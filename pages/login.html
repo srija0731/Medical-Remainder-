@@ -156,9 +156,52 @@
 
 
 
-        <button class="login-btn" type="submit">
-            Login
-        </button>
+        document
+.getElementById("loginForm")
+.addEventListener("submit",function(e){
+
+
+e.preventDefault();
+
+
+
+let email =
+document.getElementById("email").value;
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+
+let result =
+loginUser(email,password);
+
+
+
+if(result){
+
+
+alert("Login successful");
+
+
+window.location.href="dashboard.html";
+
+
+}
+
+else{
+
+
+alert("Invalid email or password");
+
+
+}
+
+
+
+});
 
 
     </form>
@@ -204,7 +247,7 @@ document.getElementById("loginForm")
     }
 
 });
-
+<script src="../js/auth.js"></script>
 
 </script>
 
