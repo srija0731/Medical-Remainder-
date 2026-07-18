@@ -211,85 +211,9 @@ Status
 
 
 
-<tbody>
-
-
-<tr>
-
-<td>
-Paracetamol
-</td>
-
-<td>
-18-07-2026
-</td>
-
-<td>
-8:00 AM
-</td>
-
-<td>
-<span class="status completed">
-Taken ✓
-</span>
-</td>
-
-</tr>
-
-
-
-
-<tr>
-
-<td>
-Vitamin D
-</td>
-
-<td>
-18-07-2026
-</td>
-
-<td>
-12:00 PM
-</td>
-
-<td>
-<span class="status missed">
-Missed ✕
-</span>
-</td>
-
-</tr>
-
-
-
-<tr>
-
-<td>
-Blood Pressure Tablet
-</td>
-
-<td>
-17-07-2026
-</td>
-
-<td>
-8:00 PM
-</td>
-
-<td>
-<span class="status completed">
-Taken ✓
-</span>
-</td>
-
-</tr>
-
-
+<tbody id="historyTable">
 
 </tbody>
-
-
 </table>
 
 
@@ -298,7 +222,93 @@ Taken ✓
 
 </div>
 
+<script>
 
+
+let history =
+JSON.parse(
+localStorage.getItem("history")
+) || [];
+
+
+
+let table =
+document.getElementById("historyTable");
+
+
+
+if(history.length === 0){
+
+
+table.innerHTML = `
+
+<tr>
+
+<td colspan="4">
+
+No history available
+
+</td>
+
+</tr>
+
+`;
+
+}
+
+
+else{
+
+
+history.forEach(item=>{
+
+
+table.innerHTML += `
+
+
+<tr>
+
+
+<td>
+${item.name}
+</td>
+
+
+<td>
+${item.date}
+</td>
+
+
+<td>
+${item.time}
+</td>
+
+
+<td>
+
+<span class="status completed">
+
+${item.status} ✓
+
+</span>
+
+</td>
+
+
+</tr>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+</script>
 </body>
 
 </html>
