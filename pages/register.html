@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register - Medical Reminder</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f1f5f9;
+}
+
+
+.register-box{
+
+    width:420px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+}
+
+
+.register-box h2{
+
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:25px;
+
+}
+
+
+.icon{
+
+    text-align:center;
+    font-size:50px;
+    margin-bottom:15px;
+
+}
+
+
+.input-group{
+
+    margin-bottom:18px;
+
+}
+
+
+.input-group label{
+
+    display:block;
+    margin-bottom:7px;
+    font-weight:500;
+
+}
+
+
+.input-group input{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+
+}
+
+
+.input-group input:focus{
+
+    outline:none;
+    border-color:#2563eb;
+
+}
+
+
+.register-btn{
+
+    width:100%;
+    padding:14px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+
+.register-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+.login-link{
+
+    text-align:center;
+    margin-top:20px;
+
+}
+
+
+.login-link a{
+
+    color:#2563eb;
+    text-decoration:none;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="register-box">
+
+
+<div class="icon">
+👤
+</div>
+
+
+<h2>Create Account</h2>
+
+
+
+<form id="registerForm">
+
+
+<div class="input-group">
+
+<label>Full Name</label>
+
+<input 
+type="text"
+id="name"
+placeholder="Enter your name"
+required>
+
+</div>
+
+
+
+<div class="input-group">
+
+<label>Email</label>
+
+<input 
+type="email"
+id="email"
+placeholder="Enter your email"
+required>
+
+</div>
+
+
+
+<div class="input-group">
+
+<label>Phone Number</label>
+
+<input 
+type="tel"
+id="phone"
+placeholder="Enter phone number"
+required>
+
+</div>
+
+
+
+
+<div class="input-group">
+
+<label>Password</label>
+
+<input 
+type="password"
+id="password"
+placeholder="Create password"
+required>
+
+</div>
+
+
+
+<div class="input-group">
+
+<label>Confirm Password</label>
+
+<input 
+type="password"
+id="confirmPassword"
+placeholder="Confirm password"
+required>
+
+</div>
+
+
+
+
+<button class="register-btn" type="submit">
+
+Register
+
+</button>
+
+
+
+</form>
+
+
+
+
+<div class="login-link">
+
+<p>
+Already have an account?
+<a href="login.html">
+Login
+</a>
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+document
+.getElementById("registerForm")
+.addEventListener("submit", function(e){
+
+
+e.preventDefault();
+
+
+
+let password =
+document.getElementById("password").value;
+
+
+let confirmPassword =
+document.getElementById("confirmPassword").value;
+
+
+
+if(password !== confirmPassword){
+
+alert("Passwords do not match");
+
+return;
+
+}
+
+
+
+alert("Registration successful!");
+
+window.location.href="login.html";
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
