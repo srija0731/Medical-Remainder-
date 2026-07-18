@@ -176,7 +176,7 @@ body{
 
 
 </style>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 
@@ -265,7 +265,17 @@ Stay healthy and never miss your medicines.
 
 
 <div class="stats">
+<div class="chart-box">
 
+<h2>
+Medicine Progress
+</h2>
+
+
+<canvas id="medicineChart"></canvas>
+
+
+</div>
 
 
 <div class="stat-card">
@@ -417,6 +427,110 @@ taken;
 
 document.getElementById("pendingMedicine").innerHTML =
 medicines.length - taken;
+
+
+
+</script>
+<script>
+
+
+let medicines =
+JSON.parse(
+localStorage.getItem("medicines")
+) || [];
+
+
+
+let taken =
+medicines.filter(
+medicine =>
+medicine.status==="Taken"
+).length;
+
+
+
+let pending =
+medicines.length - taken;
+
+
+
+const ctx =
+document
+.getElementById("medicineChart");
+
+
+
+new Chart(ctx,{
+
+
+type:"doughnut",
+
+
+data:{
+
+
+labels:[
+
+"Taken",
+
+"Pending"
+
+],
+
+
+datasets:[{
+
+data:[
+
+taken,
+
+pending
+
+],
+
+
+backgroundColor:[
+
+"#22c55e",
+
+"#f59e0b"
+
+]
+
+
+}]
+
+
+},
+
+
+
+options:{
+
+
+responsive:true,
+
+
+plugins:{
+
+
+legend:{
+
+
+position:"bottom"
+
+
+}
+
+
+}
+
+
+}
+
+
+
+});
 
 
 
