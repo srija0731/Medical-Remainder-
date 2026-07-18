@@ -198,7 +198,18 @@ body{
 
 
 <div class="container">
-
+<input 
+type="text"
+id="searchMedicine"
+placeholder="🔍 Search medicine..."
+style="
+width:100%;
+padding:14px;
+margin-bottom:25px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+">
 
 <div class="title">
 
@@ -237,20 +248,45 @@ Edit
 <script>
 
 
+let medicines =
+JSON.parse(localStorage.getItem("medicines")) || [];
+
+
 const medicineList =
 document.getElementById("medicineList");
 
 
 
-let medicine =
-JSON.parse(localStorage.getItem("medicine"));
+function displayMedicines(data){
 
 
+medicineList.innerHTML="";
 
-if(medicine){
 
+if(data.length === 0){
 
 medicineList.innerHTML = `
+
+<div class="empty">
+
+<h2>
+No medicines found
+</h2>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+
+data.forEach((medicine,index)=>{
+
+
+medicineList.innerHTML += `
 
 
 <div class="medicine-card">
@@ -267,7 +303,7 @@ ${medicine.name}
 
 
 <p class="info">
-🔔 Time: ${medicine.time}
+⏰ Time: ${medicine.time}
 </p>
 
 
@@ -277,7 +313,7 @@ ${medicine.name}
 
 
 <p class="info">
-📌 Instructions: ${medicine.instructions}
+📌 ${medicine.instructions}
 </p>
 
 
@@ -285,13 +321,22 @@ ${medicine.name}
 <div class="actions">
 
 
-<a href="add-medicine.html" class="edit">
+<button 
+class="edit"
+onclick="editMedicine(${index})">
+
 Edit
-</a>
+
+</button>
 
 
-<button class="delete" onclick="deleteMedicine()">
+
+<button 
+class="delete"
+onclick="deleteMedicine(${index})">
+
 Delete
+
 </button>
 
 
@@ -303,49 +348,92 @@ Delete
 
 `;
 
-
-
-}
-
-else{
-
-
-medicineList.innerHTML = `
-
-<div class="empty">
-
-<h2>
-No Medicines Added
-</h2>
-
-<p>
-Start adding your medicines.
-</p>
-
-</div>
-
-`;
-
-}
-
-
-
-
-function deleteMedicine(){
-
-
-localStorage.removeItem("medicine");
-
-
-alert("Medicine deleted");
-
-
-location.reload();
+});
 
 
 }
 
 
+
+
+// Delete medicine
+
+function deleteMedicine(index){
+
+
+medicines.splice(index,1);
+
+
+localStorage.setItem(
+"medicines",
+JSON.stringify(medicines)
+);
+
+
+displayMedicines(medicines);
+
+
+}
+
+
+
+// Edit medicine
+
+function editMedicine(index){
+
+
+localStorage.setItem(
+"editIndex",
+index
+);
+
+
+window.location.href =
+"edit-medicine.html";
+
+
+}
+
+
+
+
+// Search medicine
+
+document
+.getElementById("searchMedicine")
+.addEventListener("keyup",function(){
+
+
+
+let value =
+this.value.toLowerCase();
+
+
+
+let filtered =
+medicines.filter(medicine=>
+
+
+medicine.name
+.toLowerCase()
+.includes(value)
+
+
+);
+
+
+
+displayMedicines(filtered);
+
+
+
+});
+
+
+
+
+
+displayMedicines(medicines);
 
 </script>
 function editMedicine(index){
