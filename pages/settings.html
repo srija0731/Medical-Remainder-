@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Settings - Medical Reminder</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+body{
+    background:#f1f5f9;
+}
+
+
+.header{
+
+    background:white;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+
+.header h2{
+    color:#2563eb;
+}
+
+
+.header a{
+    text-decoration:none;
+    color:#2563eb;
+}
+
+
+
+.container{
+
+    padding:40px 8%;
+    display:flex;
+    justify-content:center;
+
+}
+
+
+
+.settings-box{
+
+    width:500px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+
+
+.settings-box h1{
+
+    color:#2563eb;
+    margin-bottom:30px;
+    text-align:center;
+
+}
+
+
+
+.option{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+
+.option h3{
+
+    margin-bottom:5px;
+
+}
+
+
+
+.toggle{
+
+    width:50px;
+    height:25px;
+
+}
+
+
+
+.save-btn{
+
+    width:100%;
+    margin-top:30px;
+    padding:14px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<h2>
+💊 MediCare Reminder
+</h2>
+
+
+<a href="dashboard.html">
+← Dashboard
+</a>
+
+
+</header>
+
+
+
+
+<div class="container">
+
+
+<div class="settings-box">
+
+
+<h1>
+⚙ Settings
+</h1>
+
+
+
+<div class="option">
+
+<div>
+
+<h3>
+Notifications
+</h3>
+
+<p>
+Allow medicine reminders
+</p>
+
+</div>
+
+
+<input 
+type="checkbox"
+id="notificationToggle"
+class="toggle">
+
+</div>
+
+
+
+
+<div class="option">
+
+<div>
+
+<h3>
+Dark Mode
+</h3>
+
+<p>
+Change website appearance
+</p>
+
+</div>
+
+
+<input 
+type="checkbox"
+id="darkToggle"
+class="toggle">
+
+</div>
+
+
+
+
+<button class="save-btn" onclick="saveSettings()">
+
+Save Settings
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<script>
+
+
+// Load saved settings
+
+document.getElementById("notificationToggle").checked =
+localStorage.getItem("notifications") === "true";
+
+
+
+document.getElementById("darkToggle").checked =
+localStorage.getItem("darkMode") === "true";
+
+
+
+
+
+// Dark mode
+
+document
+.getElementById("darkToggle")
+.addEventListener("change",function(){
+
+
+if(this.checked){
+
+document.body.style.background="#111827";
+document.body.style.color="white";
+
+
+localStorage.setItem(
+"darkMode",
+"true"
+);
+
+
+}
+
+else{
+
+
+document.body.style.background="#f1f5f9";
+document.body.style.color="#333";
+
+
+localStorage.setItem(
+"darkMode",
+"false"
+);
+
+
+}
+
+
+});
+
+
+
+
+
+function saveSettings(){
+
+
+let notification =
+document.getElementById("notificationToggle")
+.checked;
+
+
+
+localStorage.setItem(
+"notifications",
+notification
+);
+
+
+
+alert("Settings saved successfully");
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
