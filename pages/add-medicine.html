@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Medicine - Medical Reminder</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+body{
+    min-height:100vh;
+    background:#f1f5f9;
+}
+
+
+/* Header */
+
+.header{
+
+    background:white;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+
+.header h2{
+
+    color:#2563eb;
+
+}
+
+
+.back{
+
+    text-decoration:none;
+    color:#2563eb;
+    font-weight:500;
+
+}
+
+
+
+/* Form */
+
+.container{
+
+    display:flex;
+    justify-content:center;
+    padding:50px 20px;
+
+}
+
+
+
+.form-box{
+
+    width:500px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+
+
+.form-box h1{
+
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:30px;
+
+}
+
+
+
+.input-group{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.input-group label{
+
+    display:block;
+    margin-bottom:8px;
+    font-weight:500;
+
+}
+
+
+
+.input-group input,
+.input-group select,
+.input-group textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+
+}
+
+
+
+.input-group textarea{
+
+    height:100px;
+    resize:none;
+
+}
+
+
+
+.save-btn{
+
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    border-radius:10px;
+    cursor:pointer;
+
+}
+
+
+
+.save-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<h2>
+💊 MediCare Reminder
+</h2>
+
+
+<a href="dashboard.html" class="back">
+← Back Dashboard
+</a>
+
+
+</header>
+
+
+
+
+<div class="container">
+
+
+<div class="form-box">
+
+
+<h1>
+Add Medicine
+</h1>
+
+
+
+<form id="medicineForm">
+
+
+
+<div class="input-group">
+
+<label>
+Medicine Name
+</label>
+
+<input 
+type="text"
+id="medicineName"
+placeholder="Example: Paracetamol"
+required>
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Dosage
+</label>
+
+<input 
+type="text"
+id="dosage"
+placeholder="Example: 500mg"
+required>
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Frequency
+</label>
+
+
+<select id="frequency">
+
+<option>
+Daily
+</option>
+
+<option>
+Weekly
+</option>
+
+<option>
+Monthly
+</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Reminder Time
+</label>
+
+<input 
+type="time"
+id="time"
+required>
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Start Date
+</label>
+
+<input 
+type="date"
+id="startDate"
+required>
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Instructions
+</label>
+
+<textarea 
+id="instructions"
+placeholder="Before food / After food">
+</textarea>
+
+</div>
+
+
+
+
+
+<button class="save-btn" type="submit">
+
+Save Medicine
+
+</button>
+
+
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<script>
+
+
+document
+.getElementById("medicineForm")
+.addEventListener("submit",function(e){
+
+
+e.preventDefault();
+
+
+
+let medicine = {
+
+name:
+document.getElementById("medicineName").value,
+
+
+dosage:
+document.getElementById("dosage").value,
+
+
+frequency:
+document.getElementById("frequency").value,
+
+
+time:
+document.getElementById("time").value,
+
+
+date:
+document.getElementById("startDate").value,
+
+
+instructions:
+document.getElementById("instructions").value
+
+};
+
+
+
+localStorage.setItem(
+"medicine",
+JSON.stringify(medicine)
+);
+
+
+
+alert("Medicine Added Successfully!");
+
+
+
+window.location.href="dashboard.html";
+
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
