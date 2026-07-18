@@ -125,15 +125,42 @@ function displayMedicines(){
         </p>
 
 
-
-        <button onclick="deleteMedicine(${index})">
-        Delete
-        </button>
+</div>
 
 
-        </div>
-        `;
+<div>
 
+<button 
+onclick="takeMedicine(${index})"
+style="
+background:#22c55e;
+color:white;
+border:none;
+padding:10px;
+border-radius:8px;
+cursor:pointer;">
+Taken ✓
+</button>
+
+
+<button 
+onclick="deleteMedicine(${index})"
+style="
+background:#ef4444;
+color:white;
+border:none;
+padding:10px;
+border-radius:8px;
+cursor:pointer;">
+Delete
+</button>
+
+
+</div>
+
+
+</div>
+`;
 
     });
 
@@ -188,3 +215,28 @@ setInterval(
     checkReminder,
     60000
 );
+function takeMedicine(index){
+
+
+let medicines = getMedicines();
+
+
+medicines[index].status="Taken";
+
+
+medicines[index].takenAt =
+new Date().toLocaleString();
+
+
+localStorage.setItem(
+"medicines",
+JSON.stringify(medicines)
+);
+
+
+alert("Medicine marked as taken ✅");
+
+
+displayMedicines();
+
+}
