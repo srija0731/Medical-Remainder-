@@ -190,8 +190,12 @@ body{
 </h2>
 
 
-<a href="../index.html" class="logout">
+<a href="#" 
+onclick="logout()" 
+class="logout">
+
 Logout
+
 </a>
 
 <a href="settings.html">
@@ -402,7 +406,13 @@ Pending
 
 </body>
 <script src="../js/reminder.js"></script>
+<script src="../js/auth.js"></script>
 
+<script>
+
+checkAuth();
+
+</script>
 <script>
 
 displayMedicines();
