@@ -315,3 +315,20 @@ width:auto;
 }
 
 }
+.chart-box{
+
+background:white;
+padding:30px;
+border-radius:15px;
+margin-top:30px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+.chart-box h2{
+
+margin-bottom:20px;
+color:#2563eb;
+
+}
