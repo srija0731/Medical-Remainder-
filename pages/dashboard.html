@@ -181,226 +181,180 @@ body{
 
 
 <body>
+<body>
 
 
-<header class="dashboard-header">
+<div class="dashboard-layout">
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
 
 <h2>
-💊 MediCare Reminder
+💊 MediCare
 </h2>
 
 
-<a href="#" 
-onclick="logout()" 
-class="logout">
-
-Logout
-
+<a href="dashboard.html">
+🏠 Dashboard
 </a>
+
+
+<a href="medicines.html">
+💊 Medicines
+</a>
+
+
+<a href="calendar.html">
+📅 Calendar
+</a>
+
+
+<a href="history.html">
+📜 History
+</a>
+
+
+<a href="profile.html">
+👤 Profile
+</a>
+
 
 <a href="settings.html">
 ⚙ Settings
 </a>
-</header>
+
+
+<a href="#" onclick="logout()">
+🚪 Logout
+</a>
+
+
+</aside>
 
 
 
 
-<section class="dashboard">
+
+<!-- Main Content -->
 
 
-<div class="welcome">
+<main class="main-content">
+
+
+
+<div class="top-section">
+
 
 <h1>
-Welcome, User 👋
-    <button onclick="requestNotificationPermission()"
-style="
-background:#2563eb;
-color:white;
-padding:12px 20px;
-border:none;
-border-radius:10px;
-cursor:pointer;">
-🔔 Enable Notifications
-</button>
+Welcome, <span id="username">User</span> 👋
 </h1>
 
+
 <p>
-Manage your medicines and reminders easily.
+Stay healthy and never miss your medicines.
 </p>
+
 
 </div>
 
 
 
-<div class="cards">
 
 
-<div class="card">
-
-<h3>
-Today's Medicines
-</h3>
-
-<p class="number">
-4
-</p>
-
-</div>
+<div class="stats">
 
 
 
-<div class="card">
-
-<h3>
-Completed
-</h3>
-
-<p class="number">
-3
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Pending
-</h3>
-
-<p class="number">
-1
-</p>
-
-</div>
-
-
-
-<div class="card">
+<div class="stat-card">
 
 <h3>
 Total Medicines
 </h3>
 
-<p class="number">
-8
-</p>
+<h1 id="totalMedicine">
+0
+</h1>
 
 </div>
 
 
+
+
+<div class="stat-card">
+
+<h3>
+Taken Today
+</h3>
+
+<h1 id="takenMedicine">
+0
+</h1>
+
+</div>
+
+
+
+
+<div class="stat-card">
+
+<h3>
+Pending
+</h3>
+
+<h1 id="pendingMedicine">
+0
+</h1>
+
+</div>
+
+
+
 </div>
 
 
 
 
 
-<div class="medicine-section">
+<div class="quick-actions">
 
 
-<a href="add-medicine.html" class="add-btn">
-+ Add Medicine
+<a href="add-medicine.html">
+➕ Add Medicine
 </a>
+
+
+<a href="medicines.html">
+📋 View Medicines
+</a>
+
+
+</div>
+
+
+
 
 
 
 <h2>
-Today's Schedule
+Today's Medicines
 </h2>
+
+
 <div id="medicineContainer">
 
 
 </div>
 
 
-</div>
 
 
-<div class="medicine-card">
-
-
-<div>
-
-<h3>
-Paracetamol
-</h3>
-
-<p>
-500mg | 8:00 AM
-</p>
-
-</div>
-
-
-<span class="status taken">
-Taken ✓
-</span>
+</main>
 
 
 </div>
-
-
-
-
-
-<div class="medicine-card">
-
-
-<div>
-
-<h3>
-Vitamin D
-</h3>
-
-<p>
-1 Tablet | 12:00 PM
-</p>
-
-</div>
-
-
-<span class="status">
-Pending
-</span>
-
-
-</div>
-
-
-
-
-
-<div class="medicine-card">
-
-
-<div>
-
-<h3>
-Blood Pressure Medicine
-</h3>
-
-<p>
-10mg | 8:00 PM
-</p>
-
-</div>
-
-
-<span class="status">
-Pending
-</span>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
 
 <script src="../js/notification.js"></script>
 
