@@ -1,12 +1,12 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = "";
-$database = "medical_reminder";
+$pass = "";
+$dbname = "medical_reminder";
 
-$conn = new mysqli($host, $user, $password, $database);
+$conn = new mysqli($host, $user, $pass, $dbname);
 
 if ($conn->connect_error) {
-    die("Connection Failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
